@@ -26,12 +26,9 @@ var original_button_text = "<%= Spree.t(:place_order) %>";
     <div id="<%= dom_id(card,'spree')%>" class="row <%= cycle('even', 'odd') %>">
       <div class='col-xs-5 col-sm-5 card-type'>
         <%= radio_button_tag "existing_card", card.id %>
-        <%= card.cc_type %>
+        <%= "#{card.cc_type} - ****#{card.last_digits}" %>
       </div>
-      <div class='col-xs-3 col-sm-3'>
-        <%= "****#{card.last_digits}" %>
-      </div>
-      <div class='col-xs-2 col-sm-2'>
+      <div class='col-xs-2 col-sm-2 hidden'>
         <%= link_to 'Remove',
           spree.credit_card_url(card),
           :remote => true, :method => :delete,

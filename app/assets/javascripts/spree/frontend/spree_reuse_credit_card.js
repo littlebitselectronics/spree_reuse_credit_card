@@ -49,7 +49,7 @@ $(document).on('click', '#use_existing_card_no', function () {
 
 });
 
-$(document).on('click', '#existing_cards', function () {
+$(document).on('click', '#existing_cards input[type=radio]', function () {
   useExistingCardsInit();
   $("#use_existing_card_no").removeAttr('checked');
 });
