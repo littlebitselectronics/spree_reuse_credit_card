@@ -24,7 +24,7 @@ var original_button_text = "<%= Spree.t(:place_order) %>";
   <p class="field" data-hook="existing_cards">
     <% @cards.each do |card| %>
       <div id="<%= dom_id(card,'spree')%>" class="row <%= cycle('even', 'odd') %>">
-        <div class='col-xs-5 col-sm-5 card-type'>
+        <div class='col-xs-12 col-sm-5 card-type'>
           <%= radio_button_tag "existing_card", card.id %>
           <%= "#{card.cc_type} - ****#{card.last_digits}" %>
         </div>
