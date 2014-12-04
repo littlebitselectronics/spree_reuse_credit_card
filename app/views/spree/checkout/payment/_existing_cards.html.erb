@@ -24,9 +24,11 @@ var original_button_text = "<%= Spree.t(:place_order) %>";
   <p class="field" data-hook="existing_cards">
     <% @cards.each do |card| %>
       <div id="<%= dom_id(card,'spree')%>" class="row <%= cycle('even', 'odd') %>">
-        <div class='col-xs-12 col-sm-5 card-type'>
-          <%= radio_button_tag "existing_card", card.id %>
-          <%= "#{card.cc_type} - ****#{card.last_digits}" %>
+        <div class='col-xs-12 card-type'>
+          <label>
+            <%= radio_button_tag "existing_card", card.id %>
+            <%= "#{card.cc_type} - ****#{card.last_digits}" %>
+          </label>
         </div>
         <div class='col-xs-2 col-sm-2 hidden'>
           <%= link_to 'Remove',
@@ -42,6 +44,8 @@ var original_button_text = "<%= Spree.t(:place_order) %>";
 
 <% end %>
 <div id="card_options">
-  <%= radio_button_tag 'use_existing_card', 'no', 'checked' %>
-  Add new credit card
+  <label>
+    <%= radio_button_tag 'use_existing_card', 'no', 'checked' %>
+    Add new credit card
+  </label>
 </div>
