@@ -1,7 +1,7 @@
 <%= content_for :head do %>
   <%= javascript_tag do -%>
   <%== "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-var original_button_text = "<%= Spree.t(:place_order) %>";
+  var original_button_text = "<%= Spree.t(:place_order) %>";
   <% end -%>
 <% end %>
 
@@ -21,7 +21,7 @@ var original_button_text = "<%= Spree.t(:place_order) %>";
       });
     <% end %>
 
-    <p class="field" data-hook="existing_cards" />
+    <p class="field" data-hook="existing_cards">
       <% @cards.each do |card| %>
         <div id="<%= dom_id(card,'spree')%>" class="row <%= cycle('even', 'odd') %>">
           <div class='col-xs-12 card-type'>
@@ -30,11 +30,10 @@ var original_button_text = "<%= Spree.t(:place_order) %>";
               <%= "#{card.cc_type} - ****#{card.last_digits}" %>
             </label>
           </div>
-          <!-- #{param_prefix} -->
         </div>
       <% end %>
     </p>
-  </div> <!-- existing_cards -->
+  </div>
 
 <% end %>
 <div id="card_options">
