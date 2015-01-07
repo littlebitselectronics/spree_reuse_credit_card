@@ -11,35 +11,29 @@ var original_button_text = "<%= Spree.t(:place_order) %>";
 <% if @cards.present? %>
 
   <div id="existing_cards">
-  <%= javascript_tag do -%>
+    <%= javascript_tag do -%>
 
-    $(document).ready(function () {
+      $(document).ready(function () {
 
-      // we are not on the 'my account' page, so let's plug in the
-      // appropriate callback for when a card is deleted
-      creditCardDeleteCallback = paymentPageResetCreditCardOptions;
-    });
-  <% end %>
-
-  <p class="field" data-hook="existing_cards">
-    <% @cards.each do |card| %>
-      <div id="<%= dom_id(card,'spree')%>" class="row <%= cycle('even', 'odd') %>">
-        <div class='col-xs-12 card-type'>
-          <label>
-            <%= radio_button_tag "existing_card", card.id %>
-            <%= "#{card.cc_type} - ****#{card.last_digits}" %>
-          </label>
-        </div>
-        <div class='col-xs-2 col-sm-2 hidden'>
-          <%= link_to 'Remove',
-            spree.credit_card_url(card),
-            :remote => true, :method => :delete,
-            :confirm => 'Are you sure?' %>
-        </div>
-        <!-- #{param_prefix} -->
-      </div>
+        // we are not on the 'my account' page, so let's plug in the
+        // appropriate callback for when a card is deleted
+        creditCardDeleteCallback = paymentPageResetCreditCardOptions;
+      });
     <% end %>
-  </p>
+
+    <p class="field" data-hook="existing_cards" />
+      <% @cards.each do |card| %>
+        <div id="<%= dom_id(card,'spree')%>" class="row <%= cycle('even', 'odd') %>">
+          <div class='col-xs-12 card-type'>
+            <label>
+              <%= radio_button_tag "existing_card", card.id %>
+              <%= "#{card.cc_type} - ****#{card.last_digits}" %>
+            </label>
+          </div>
+          <!-- #{param_prefix} -->
+        </div>
+      <% end %>
+    </p>
   </div> <!-- existing_cards -->
 
 <% end %>
